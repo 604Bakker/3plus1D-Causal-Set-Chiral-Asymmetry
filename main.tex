@@ -1,0 +1,211 @@
+% main.tex
+\documentclass[11pt,oneside]{article}
+
+% Encoding & fonts
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+% Math & symbols
+\usepackage{amsmath,amssymb,amsthm}
+
+% Figures, tables
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+
+% Formatting
+\usepackage[margin=1in]{geometry}
+\usepackage[numbers,sort&compress]{natbib}
+
+% Hyperlinks 
+\usepackage{hyperref}
+
+\title{
+\bf Emergent Chiral Asymmetry in 3+1D Causal Sets \\[4pt]
+from Dirac--Kähler Fermions with Parity-Biased Sprinklings
+}
+
+\author{
+  Greg Bakker\\
+  Independent Researcher\\
+  \texttt{gsbbakr@gmail.com}\\
+  \url{https://github.com/604Bakker}
+}
+
+\date{25 November 2025}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+I present numerical evidence that random $3{+}1$-dimensional causal sets, when
+sprinkled with a mild parity-violating bias, undergo a sharp transition to a
+phase with a large, topologically robust chiral index. Using the Dirac--Kähler
+discretization with a minimal Wilson term, I find that the lowest modes of
+$i\gamma_5 D$ develop an excess of $\sim 40$--$50$ zero modes of uniform
+handedness once the sprinkling bias exceeds $r \gtrsim 0.11$ and the
+discreteness scale exceeds $\varepsilon \gtrsim 0.35$. The effect is stable in
+the range $N = 6000$--$8000$ points and extends the chiral plateau previously
+observed in $2{+}1$ dimensions. The emergent asymmetry requires no gauge fields,
+no Higgs sector, and no continuum limit: it is generated purely by the interplay
+between causal-set microstructure and the Dirac--Kähler operator. These results
+suggest that discrete spacetime alone may support nontrivial chiral structure,
+and I outline connections to potential phenomenology.
+\end{abstract}
+
+\section{Introduction}
+
+The origin of chiral asymmetry in fundamental interactions remains a central
+problem at the interface of particle physics and quantum gravity. In the
+continuum Standard Model, fermion chirality is imposed through gauge
+representations and the Higgs mechanism. It is natural to ask whether such
+asymmetry could arise instead from microscopic geometric or topological structure
+of spacetime itself.
+
+Causal-set theory provides a minimal framework for discrete Lorentzian geometry:
+spacetime is replaced by a locally finite poset with order representing causal
+precedence \citep{Bombelli1987, Sorkin2003}. While kinematics is well defined,
+dynamical and matter-theoretic aspects remain challenging. In prior work, a
+striking phenomenon was observed in $2{+}1$ dimensions: with Dirac--Kähler (DK)
+fermions, a small parity-violating deformation of the sprinkling distribution
+produces a saturated ``chiral plateau'' with dozens of zero modes of identical
+handedness \citep{Bakker2025_2p1}. 
+
+In this work I extend that analysis to $3{+}1$ dimensions. I show that the
+same mechanism leads to an abrupt topological transition yielding a large,
+stable chiral index. Remarkably, the effect persists with no reliance on
+continuum limits, gauge fields, or fine-tuning. It is a purely geometric
+phenomenon emerging from the discrete structure of the causal set.
+
+\section{Causal-Set Construction and Parity Bias}
+
+I generate causal sets via Poisson sprinklings into a $3{+}1$-dimensional
+Minkowski region with volume $V = N$, following standard practice
+\citep{Henson2009}. To introduce a controlled parity-violating deformation,
+each point $(x,y,z)$ is rotated in the $(x,y)$ plane by angle $r\pi$:
+\begin{equation}
+ (x,y,z) \;\longrightarrow\; (x\cos(r\pi) - y\sin(r\pi),\,
+                              x\sin(r\pi) + y\cos(r\pi),\,
+                              z).
+\end{equation}
+The parameter $r$ thus tunes a left- or right-handed bias in the spatial
+distribution. The causal relation is defined by timelike separation, and links
+are retained for pairs separated by proper time less than a discreteness scale
+$\varepsilon$.
+
+The Dirac--Kähler operator is constructed from signed incidence matrices of
+simplices (vertices, links, faces and tetrahedra), following
+\citep{Rocchini2023}. A minimal Wilson term is added to suppress fermion
+doublers. The chiral index is defined as the difference $n_+ - n_-$ of positive
+and negative near-zero eigenmodes of $i\gamma_5 D$, computed over the lowest
+140 eigenvalues.
+
+\section{Results}
+
+\subsection{Phase Transition}
+
+Figure~\ref{fig:cliff} shows the chiral index as a function of discreteness
+scale $\varepsilon$ for several values of the parity-bias parameter $r$. A
+sharp transition is evident: for $r \lesssim 0.11$, the index is strictly zero,
+while for $r \gtrsim 0.11$ and $\varepsilon \gtrsim 0.35$, the system develops
+a macroscopic negative index of approximately $-45$.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.95\textwidth]{3plus1_cliff_plot.png}
+  \caption{Chiral index as a function of discreteness scale $\varepsilon$
+  for several bias strengths $r$, with $N=6000$--$8000$. A robust negative
+  plateau with magnitude $\sim 40$--$50$ emerges above the critical surface
+  $r \gtrsim 0.11$, $\varepsilon \gtrsim 0.35$.}
+  \label{fig:cliff}
+\end{figure}
+
+Representative points in the chiral phase are listed in Table~\ref{tab:phase}.
+Fluctuations over multiple realizations are modest ($\lesssim 20\%$), indicating
+a topologically stabilized phase analogous to the $2{+}1$-dimensional chiral
+plateau.
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{ccccc}
+\toprule
+$r$ & $\varepsilon$ & $N$ & index & trials \\
+\midrule
+0.40 & 0.50 & 8000 & $-38.1 \pm 8.6$ & 40 \\
+0.40 & 0.50 & 8000 & $-51$          & single \\
+0.275 & 0.501 & 6000 & $-46.0 \pm 4.7$ & 40 \\
+0.220 & 0.501 & 6000 & $-46.0 \pm 4.7$ & 40 \\
+\bottomrule
+\end{tabular}
+\caption{Representative points in the chiral phase. The plateau persists across
+$r=0.11$--$0.44$ and $\varepsilon \gtrsim 0.35$.}
+\label{tab:phase}
+\end{table}
+
+Reversing the sign of $r$ reverses the sign of the asymmetry, showing that the
+effect is controlled by handedness rather than numerical asymmetry.
+
+\section{Discussion}
+
+The emergence of a large chiral index in this setup is topological in origin:
+the Dirac--Kähler operator detects an imbalance in oriented $3$-simplices induced
+by the parity-biased sprinkling. Because the DK operator is built directly from
+the incidence structure of the causal set, the chiral index reflects a purely
+geometric aspect of the underlying poset.
+
+I emphasize several features:
+\begin{itemize}
+  \item \textbf{Absence of continuum tuning.} The asymmetry appears at finite
+        $N$ and finite $\varepsilon$, without requiring continuum limits.
+  \item \textbf{Topological robustness.} Index fluctuations are small even in
+        finite systems, suggesting that the effect should survive coarse-graining.
+  \item \textbf{Dimensional shift.} The critical curve shifts upward relative to
+        the $2{+}1$-dimensional case, consistent with dilution of an effective
+        Chern--Simons-like term in higher dimensions.
+\end{itemize}
+
+The results point to a potentially rich interplay between discrete Lorentzian
+geometry, topological invariants of incidence complexes, and fermionic structure.
+
+\section{Outlook}
+
+Several directions follow naturally:
+
+\begin{itemize}
+  \item \textbf{Analytic characterization.} An explicit topological index theorem
+        for DK fermions on causal sets may be within reach.
+  \item \textbf{Continuum correspondence.} It is important to determine whether
+        the emergent index corresponds to a continuum chiral anomaly or effective
+        Chern--Simons density.
+  \item \textbf{Matter coupling.} Introducing gauge fields or scalar fields may
+        clarify whether the mechanism can seed chiral structure resembling that
+        of the Standard Model.
+  \item \textbf{Phenomenology.} Connections between parity-odd causal-set microstructure
+        and isotropic but parity-odd backgrounds (e.g.\ as proposed in analyses
+        of isotope-shift anomalies) warrant investigation.
+\end{itemize}
+
+\section*{Data and Code Availability}
+
+All simulation code, parameters, and data for this work are available at
+\url{https://github.com/604Bakker/3-1D-entropic-foam}. A Zenodo archive with DOI
+will accompany the final release.
+
+\begin{acknowledgments}
+The author thanks the causal-set research community for helpful discussions and
+the open-source scientific Python ecosystem for tools enabling large-scale
+computations on modest hardware.
+
+Certain aspects of code implementation, debugging, and text polishing benefited
+from interactive assistance provided by large language models (including Grok by
+xAI and ChatGPT by OpenAI). All scientific ideas, physical interpretation, and
+final conclusions are solely the responsibility of the author.
+\end{acknowledgments}
+
+\bibliographystyle{unsrtnat}
+\bibliography{references}
+
+\end{document}
