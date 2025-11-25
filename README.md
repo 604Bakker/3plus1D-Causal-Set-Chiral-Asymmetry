@@ -40,6 +40,21 @@ In 2+1 dimensions, it was previously found that a slight parity-violating deform
 
 These results indicate that **discrete spacetime microstructure alone** can support nontrivial chiral structure — without gauge fields, Higgs dynamics, or continuum limits.
 
+## Installation & Running
+
+1. Clone the repo: `git clone https://github.com/604Bakker/3plus1D-Causal-Set-Chiral-Asymmetry.git`
+2. Install dependencies: `pip install -r requirements.txt`
+3. Run the main script: `python final_3plus1_chiral_cliff.py`
+4. To regenerate the plot: `python make_3plus1_cliff_plot.py` (requires live_sweep.csv from full sweep)
+
+
+  - final_3plus1_chiral_cliff.py   # Reproduces the key result
+  -full_phase_sweep_3plus1.py     # Generates the full phase diagram (live_sweep.csv)
+  - make_3plus1_cliff_plot.py      # Creates the publication plot from CSV
+  - live_sweep.csv                 # Raw data from sweep
+  - 3plus1_cliff_plot.png          # The chiral cliff figure
+  - README.md
+
 📚 Citing This Work
 If you use this repository or build upon it, please cite:
 
