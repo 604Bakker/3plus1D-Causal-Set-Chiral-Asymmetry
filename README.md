@@ -1,75 +1,127 @@
-# Emergent Chiral Asymmetry in 3+1D Causal Sets  
-### Dirac–Kähler Fermions with Parity-Biased Poisson Sprinklings
+# Emergent Chiral Asymmetry in 3+1D Causal Sets
+### Numerical code and data accompanying the preprint:
+**"Emergent Chiral Asymmetry in 3+1D Causal Sets from Dirac–Kähler Fermions with Parity-Biased Sprinklings"**
 
-This repository contains the full simulation code, data-generation tools, and analysis scripts used in the paper:
-
-**“Emergent Chiral Asymmetry in 3+1D Causal Sets from Dirac–Kähler Fermions with Parity-Biased Sprinklings”  
-by Greg Bakker (2025)**
-
-The project provides numerical evidence for a sharp topological transition in random causal sets: once a small parity-violating sprinkling bias is introduced, the Dirac–Kähler spectrum develops a large, robust chiral index of ~40–50 zero modes of uniform handedness. This extends the previously discovered 2+1D “chiral plateau” into 3+1 dimensions.
+Author: Greg Bakker  
+DOI: https://doi.org/10.5281/zenodo.17714411  
+GitHub: https://github.com/604Bakker/3-1D-entropic-foam  
 
 ---
 
-## ✨ Key Features
+## Overview
 
-- **3+1D Poisson sprinkling generator** with adjustable parity-violating bias  
-- **Causal relation and link construction** with proper-time cutoff  
-- **Dirac–Kähler operator** built directly from incidence matrices  
-- **Minimal Wilson term** to suppress doublers  
-- **Chern–Simons-like orientation term** for parity bias  
-- **Eigenvalue computation** via sparse Hermitian solvers  
-- **Chiral index measurement** from low-lying modes of `i γ₅ D`  
-- **Phase diagram tools** to reproduce the “chiral plateau”  
-- **100% reproducible**: all parameters, seeds, and code provided
+This repository contains the exact code, data, figures, and manuscript sources used
+to produce the results in the above paper. All numerical simulations were conducted
+using Python 3.11.9 on consumer hardware. The results demonstrate an emergent 
+topological chiral index in 3+1D causal sets under parity-biased Poisson sprinklings 
+using a Dirac–Kähler fermion operator with a Wilson term.
+
+This package enables **full reproducibility** of:
+
+- The N=6000 sweep used for the phase diagram  
+- The chiral index computation for each (r, ε) parameter point  
+- All three main plots included in the paper  
+- LaTeX compilation of the manuscript  
 
 ---
 
-## 🔬 Scientific Background
+## Folder Contents
 
-Causal-set theory models spacetime as a discrete partially ordered set, replacing the metric continuum with locally finite order structure. The Dirac–Kähler (DK) formulation represents fermions on this discrete geometry using chain complexes rather than local tetrads or spin structures.
+### **Simulation Code**
+- `3d_sweep.py`  
+  Main script to run the full parameter sweep, generating chiral index measurements.
 
-In 2+1 dimensions, it was previously found that a slight parity-violating deformation of the sprinkling distribution produces a **topologically stable excess of chiral zero modes**. This repository extends that investigation to **3+1 dimensions**, where we observe:
+### **Plotting Code**
+- `create_figs.py`  
+  Script that reads `live_sweep.csv` and generates:  
+  - `fig1_phase_diagram.pdf`  
+  - `fig2_slices.pdf`  
+  - `fig3_distribution.pdf`
 
-- A **sharp critical line** around  
-  - `r ≳ 0.11` (bias strength)  
-  - `ε ≳ 0.35` (discreteness scale)
+### **Data**
+- `live_sweep.csv`  
+  Contains the complete sweep results for:
+    - r ∈ [0.1, 0.55]  
+    - ε ∈ [-1.8, -0.3]  
+    - 40 trials per grid point  
+    - Column fields: r, epsilon, mean_index, std_index, trials_done  
 
-- A stable chiral index plateau of **≈ −45** for `N = 6000–8000`  
+### **Figures**
+- `fig1_phase_diagram.pdf`  
+- `fig2_slices.pdf`  
+- `fig3_distribution.pdf`  
 
-- Reversal of handedness when the sign of the parity bias is flipped  
+These were generated directly from `create_figs.py` and included unchanged in the paper.
 
-These results indicate that **discrete spacetime microstructure alone** can support nontrivial chiral structure — without gauge fields, Higgs dynamics, or continuum limits.
+### **Manuscript**
+- `main.tex`  
+- `references.bib`  
+- `Emergent Chiral Asymmetry in 3 + 1D Causal Sets.pdf`  
 
-## Installation & Running
+The exact document submitted for journal review.
 
-1. Clone the repo: `git clone https://github.com/604Bakker/3plus1D-Causal-Set-Chiral-Asymmetry.git`
-2. Install dependencies: `pip install -r requirements.txt`
-3. Run the main script: `python final_3plus1_chiral_cliff.py`
-4. To regenerate the plot: `python make_3plus1_cliff_plot.py` (requires live_sweep.csv from full sweep)
+### **Environment Requirements**
+- `requirements.txt`  
+Lists the Python dependencies needed to reproduce all computations and figures.
 
+---
 
-  - final_3plus1_chiral_cliff.py   # Reproduces the key result
-  -full_phase_sweep_3plus1.py     # Generates the full phase diagram (live_sweep.csv)
-  - make_3plus1_cliff_plot.py      # Creates the publication plot from CSV
-  - live_sweep.csv                 # Raw data from sweep
-  - 3plus1_cliff_plot.png          # The chiral cliff figure
-  - README.md
+## How to Reproduce the Sweep
 
-📚 Citing This Work
-If you use this repository or build upon it, please cite:
+The full sweep used in the paper is already included as `live_sweep.csv`.  
+However, if you wish to re-run it:
 
-G. Bakker, “Emergent Chiral Asymmetry in 3+1D Causal Sets from Dirac–Kähler Fermions with Parity-Biased Sprinklings” (2025).
-Zenodo DOI: [to be added]
+```bash
+python3 3d_sweep.py
+```
 
-🤝 Acknowledgments
-Certain aspects of implementation, debugging, and text polishing benefited from interactive assistance with large language models (Grok by xAI and ChatGPT by OpenAI). All scientific ideas, physical conclusions, and numerical results are solely the responsibility of the author.
+Estimated runtime: several hours on a modern CPU (N=6000 per run).
 
-📝 License
-Released under the MIT License.
-You are free to use, modify, and build upon this work for research or education.
+---
 
-🌟 Contributions
-Pull requests, reproducibility improvements, and extended experiments (e.g., with gauge fields, alternative DK discretizations, or different parity-bias models) are welcome.
+## How to Reproduce All Figures
 
-Feel free to open an issue with questions or feature requests.
+Run the plotting script:
 
+```bash
+python3 create_figs.py
+```
+
+This will regenerate:
+
+- `fig1_phase_diagram.pdf`  
+- `fig2_slices.pdf`  
+- `fig3_distribution.pdf`  
+
+These should match the versions included in the paper.
+
+---
+
+## Installation Instructions
+
+Ensure you have Python 3.11.9 installed.  
+Then install all required packages:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## Citation
+
+If you use this code or data in your work, please cite:
+
+```
+Greg Bakker (2025). Emergent Chiral Asymmetry in 3+1D Causal Sets from Dirac–Kähler Fermions with Parity-Biased Sprinklings.
+Zenodo. https://doi.org/10.5281/zenodo.17714411
+```
+
+---
+
+## License
+
+This project is released under an open license to ensure full transparency and reproducibility.
+All scientific conclusions are the responsibility of the author.
+
+---
