@@ -149,4 +149,5 @@ print("Scaling N...")
 for Nn in [10000, 20000, 40000]:
     print(f"N = {Nn} ...", end=" ")
     idxs = [trial(Nn, best_eps, best_r) for _ in tqdm(range(12), leave=False)]
+
     print(f"{np.mean(idxs):.2f} ± {np.std(idxs):.2f}")
