@@ -1,0 +1,14 @@
+numpy>=1.26
+scipy>=1.11
+matplotlib>=3.8
+pandas>=2.1
+numba>=0.59
+networkx>=3.2
+tqdm>=4.66
+
+# Optional but recommended:
+# sparse matrix structures for DK operator assembly
+scikit-sparse>=0.4
+
+# For exporting PDFs or additional figure support
+pyparsing>=3.1
